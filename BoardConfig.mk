@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+DEVICE_PATH := device/yu/lettuce
+
 # inherit from common msm8916_64
 -include device/qcom/msm8916_64/BoardConfig.mk
 
@@ -33,7 +35,7 @@ BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/yu/lettuce/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
@@ -59,7 +61,7 @@ AUDIO_FEATURE_ENABLED_FM := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/yu/lettuce/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
 KERNEL_DEFCONFIG  := yu_lettuce_defconfig
 TARGET_USE_CM_RAMDISK := true
@@ -77,14 +79,14 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USES_QCOM_HARDWARE := false
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/yu/lettuce/ramdisk/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/ramdisk/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-    device/yu/lettuce/sepolicy
+    $(DEVICE_PATH)/sepolicy
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
